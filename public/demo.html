@@ -4,56 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-Navigator Demo</title>
-    <!-- Dependencies -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/lucide-react@latest"></script>
-    
-    <!-- K-Navigator -->
-    <script crossorigin src="/dist/k-navigator.umd.js"></script>
-    <link rel="stylesheet" href="/dist/style.css">
+    <title>K-Navigator - Installation Guide</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    <div id="navigation" style="width: 100%; height: 100vh;"></div>
+    <h1>K-Navigator Installation Guide</h1>
 
-    <script>
-        const { KNavigator } = window.KNavigator;
-        
-        const nodes = [
-            {
-                id: 'welcome',
-                name: 'Welcome to K-Town',
-                description: 'Start your journey',
-                icon: Lucide.Star({ className: "w-6 h-6 text-white" }),
-                x: 50,
-                y: 50,
-                color: 'from-purple-500 to-purple-600',
-                status: 'available',
-                type: 'hub',
-                connections: ['retail', 'fan', 'creative']
-            },
-            {
-                id: 'retail',
-                name: 'Retail Network',
-                description: 'Create your business profile',
-                icon: Lucide.Store({ className: "w-6 h-6 text-white" }),
-                x: 30,
-                y: 30,
-                color: 'from-pink-500 to-pink-600',
-                status: 'available',
-                type: 'network'
-            }
-        ];
+    <div class="warning">
+        <strong>⚠️ Required Dependencies:</strong>
+        <ul>
+            <li>React (>= 18.0.0)</li>
+            <li>ReactDOM (>= 18.0.0)</li>
+            <li>Lucide React (>= 0.462.0)</li>
+        </ul>
+    </div>
 
-        const root = ReactDOM.createRoot(document.getElementById('navigation'));
-        root.render(
-            React.createElement(KNavigator, {
-                initialNodes: nodes,
-                onNodeClick: (node) => console.log('Clicked:', node.id),
-                theme: 'dark'
-            })
-        );
-    </script>
+    <h2>Installation</h2>
+    <p>Download the following files and include them in your project:</p>
+    <ul>
+        <li><code>k-navigator.es.js</code> - ES module version</li>
+        <li><code>k-navigator.umd.js</code> - UMD version</li>
+        <li><code>style.css</code> - Required styles</li>
+    </ul>
+
+    <h2>Usage Example</h2>
+    <pre>
+import { KNavigator } from './k-navigator.es.js';
+import './style.css';
+
+const nodes = [
+    {
+        id: 'welcome',
+        name: 'Welcome to K-Town',
+        description: 'Start your journey',
+        icon: Star,
+        x: 50,
+        y: 50,
+        color: 'from-purple-500 to-purple-600',
+        status: 'available',
+        type: 'hub',
+        connections: ['retail']
+    }
+];
+
+function App() {
+    return (
+        &lt;KNavigator 
+            initialNodes={nodes}
+            onNodeClick={(node) => console.log('Clicked:', node)}
+            theme="dark"
+        /&gt;
+    );
+}
+    </pre>
+
+    <h2>Props Reference</h2>
+    <ul>
+        <li><code>initialNodes</code>: Array of node objects defining your navigation structure</li>
+        <li><code>onNodeClick</code>: Callback function triggered when a node is clicked</li>
+        <li><code>theme</code>: 'light' | 'dark' (optional, defaults to 'dark')</li>
+    </ul>
+
+    <h2>Need Help?</h2>
+    <p>For issues and feature requests, please visit our <a href="https://github.com/your-repo">GitHub repository</a>.</p>
 </body>
 </html>
